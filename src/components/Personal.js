@@ -18,6 +18,22 @@ class Personal extends Component {
       title: {
         text: "",
       },
+
+      address: {
+        text: "",
+      },
+
+      phone: {
+        number: "",
+      },
+
+      email: {
+        text: "",
+      },
+
+      description: {
+        text: "",
+      },
     };
   }
 
@@ -45,8 +61,32 @@ class Personal extends Component {
     });
   };
 
+  changeAddress = (e) => {
+    this.setState({
+      address: {
+        text: e.target.value,
+      },
+    });
+  };
+
+  changeNumber = (e) => {
+    this.setState({
+      phone: {
+        number: e.target.value,
+      },
+    });
+  };
+
+  changeEmail = (e) => {
+    this.setState({
+      email: {
+        text: e.target.value,
+      },
+    });
+  };
+
   render() {
-    const { fName, lName, title } = this.state;
+    const { fName, lName, title, address, phone, email } = this.state;
     return (
       <div>
         <Input
@@ -67,7 +107,34 @@ class Personal extends Component {
           placeholder="Title"
           onChange={this.changeTitle}
         />
-        <DisplayCV fName={fName.text} lName={lName.text} title={title.text} />
+        <Input
+          value={address.text}
+          type="text"
+          placeholder="Address"
+          onChange={this.changeAddress}
+        />
+        <Input
+          value={phone.number}
+          type="tel"
+          placeholder="Phone Number"
+          onChange={this.changeNumber}
+        />
+
+        <Input
+          value={email.text}
+          type="email"
+          placeholder="Email"
+          onChange={this.changeEmail}
+        />
+
+        <DisplayCV
+          fName={fName.text}
+          lName={lName.text}
+          title={title.text}
+          address={address.text}
+          phone={phone.number}
+          email={email.text}
+        />
       </div>
     );
   }
