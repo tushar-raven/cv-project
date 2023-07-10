@@ -8,7 +8,7 @@ const AddButton = (props) => {
 
 const DeleteButton = (props) => {
   const { onClick } = props;
-  return <button onClick={onClick}>Add</button>;
+  return <button onClick={onClick}>Delete</button>;
 };
 
-export default { AddButton, DeleteButton };
+export { AddButton, DeleteButton };

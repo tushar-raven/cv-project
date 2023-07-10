@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "./Input";
-import AddButton from "./Buttons";
+import { AddButton } from "./Buttons";
 import DisplayCV from "./CV";
 
 class Education extends Component {
