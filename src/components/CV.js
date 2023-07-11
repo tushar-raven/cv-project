@@ -1,27 +1,12 @@
 import React from "react";
 
 const DisplayCV = (props) => {
-  const {
-    fName,
-    lName,
-    title,
-    address,
-    phone,
-    universityName,
-    degree,
-    uniCity,
-  } = props;
+  const { formData } = props;
 
   return (
     <div>
-      <div>{fName}</div>
-      <div>{lName}</div>
-      <div>{title}</div>
-      <div>{address}</div>
-      <div>{phone}</div>
-      <div>{universityName}</div>
-      <div>{degree}</div>
-      <div>{uniCity}</div>
+      <div>{formData?.fName}</div>
+      <div>{formData?.uniCity}</div>
     </div>
   );
 };

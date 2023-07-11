@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Personal from "./Personal";
-import Education from "./Education";
+// import Education from "./Education";
 import Experience from "./Experience";
 import DisplayCV from "./CV";
-// import { AddButton, DeleteButton } from "./Buttons";
+import { AddButton } from "./Buttons";
+import EducationWrapper from "./EducationWrapper";
 
 class Form extends Component {
   constructor() {
@@ -12,34 +13,55 @@ class Form extends Component {
     this.state = {
       formData: {},
     };
+
+    this.state = {
+      educationFormData: [],
+    };
+
+    this.state = {
+      educationNumber: 0,
+    };
   }
   changePersonal = (personalData) => {
-    this.setState((previousData) => ({
-      ...previousData,
-      ...personalData,
+    this.setState((prevData) => ({
+      formData: { ...prevData.formData, ...personalData },
     }));
   };
 
-  changeEducation = (educationData) => {
-    this.setState((previousData) => ({
-      ...previousData,
-      ...educationData,
+  changeEducation = (educationData, key) => {
+    this.setState((prevData) => ({
+      //formData: { ...prevData.formData, ...educationData },
+      formData: {
+        ...prevData.formData,
+        [key]: { ...prevData.formData[key], ...educationData },
+      },
     }));
   };
 
   changeExperience = (experienceData) => {
+    this.setState((prevData) => ({
+      formData: { ...prevData.formData, ...experienceData },
+    }));
+  };
+
+  addComponent = () => {
     this.setState((previousData) => ({
-      ...previousData,
-      ...experienceData,
+      educationNumber: previousData.educationNumber + 1,
     }));
   };
 
   render() {
-    const { formData } = this.state;
+    const { formData, educationNumber } = this.state;
+    console.log(formData);
+
     return (
       <div>
         <Personal onPersonalChange={this.changePersonal} />
-        <Education onEducationChange={this.changeEducation} />
+        <EducationWrapper
+          educationNumber={educationNumber}
+          changeEducation={this.changeEducation}
+        />
+        <AddButton onClick={this.addComponent} />
         <Experience onExperienceChange={this.changeExperience} />
         <DisplayCV formData={formData} />
       </div>

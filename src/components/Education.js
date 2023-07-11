@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import Input from "./Input";
-import { AddButton } from "./Buttons";
-import DisplayCV from "./CV";
 
 class Education extends Component {
   constructor() {
     super();
 
     this.state = {
-      universityName: {
+      uniName: {
         text: "",
       },
 
@@ -30,91 +28,43 @@ class Education extends Component {
     };
   }
 
-  changeUniversityName = (e) => {
-    this.setState({
-      universityName: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeDegree = (e) => {
-    this.setState({
-      degree: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeUniCity = (e) => {
-    this.setState({
-      uniCity: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeUniStartFrom = (e) => {
-    this.setState({
-      uniStartFrom: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeUniEnded = (e) => {
-    this.setState({
-      uniEnded: {
-        text: e.target.value,
-      },
-    });
+  changeData = (e) => {
+    const { name, value } = e.target;
+    this.props.onEducationChange({ [name]: value }, this.props.onKey);
   };
 
   render() {
-    const { universityName, degree, uniCity, uniStartFrom, uniEnded } =
-      this.state;
-
     return (
       <>
         <Input
-          value={universityName.text}
           type="text"
+          name="uniName"
           placeholder="University Name"
-          onChange={this.changeUniversityName}
+          onChange={this.changeData}
         />
         <Input
-          value={degree.text}
+          name="degree"
           type="text"
           placeholder="Degree"
-          onChange={this.changeDegree}
+          onChange={this.changeData}
         />
         <Input
-          value={uniCity.text}
           type="text"
+          name="uniCity"
           placeholder="City"
-          onChange={this.changeUniCity}
+          onChange={this.changeData}
         />
         <Input
-          value={uniStartFrom.text}
           type="text"
+          name="uniStartFrom"
           placeholder="From"
-          onChange={this.changeUniStartFrom}
+          onChange={this.changeData}
         />
         <Input
-          value={uniEnded.text}
           type="text"
+          name="uniEnded"
           placeholder="To"
-          onChange={this.changeUniEnded}
-        />
-
-        <AddButton />
-
-        <DisplayCV
-          universityName={universityName.text}
-          degree={degree.text}
-          uniCity={uniCity.text}
-          uniStartFrom={uniStartFrom.text}
-          uniEnded={uniEnded.text}
+          onChange={this.changeData}
         />
       </>
     );

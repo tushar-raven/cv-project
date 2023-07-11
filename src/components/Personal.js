@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DisplayCV from "./CV";
+// import DisplayCV from "./CV";
 import Input from "./Input";
 
 class Personal extends Component {
@@ -37,103 +37,50 @@ class Personal extends Component {
     };
   }
 
-  changeFirstName = (e) => {
-    this.setState({
-      fName: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeLastName = (e) => {
-    this.setState({
-      lName: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeTitle = (e) => {
-    this.setState({
-      title: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeAddress = (e) => {
-    this.setState({
-      address: {
-        text: e.target.value,
-      },
-    });
-  };
-
-  changeNumber = (e) => {
-    this.setState({
-      phone: {
-        number: e.target.value,
-      },
-    });
-  };
-
-  changeEmail = (e) => {
-    this.setState({
-      email: {
-        text: e.target.value,
-      },
-    });
+  changeData = (e) => {
+    const { name, value } = e.target;
+    this.props.onPersonalChange({ [name]: value });
   };
 
   render() {
-    const { fName, lName, title, address, phone, email } = this.state;
     return (
       <div>
         <Input
-          value={fName.text}
           type="text"
+          name="fName"
           placeholder="First Name"
-          onChange={this.changeFirstName}
+          onChange={this.changeData}
         />
         <Input
-          value={lName.text}
           type="text"
+          name="lName"
           placeholder="Last Name"
-          onChange={this.changeLastName}
+          onChange={this.changeData}
         />
         <Input
-          value={title.text}
           type="text"
+          name="title"
           placeholder="Title"
-          onChange={this.changeTitle}
+          onChange={this.changeData}
         />
         <Input
-          value={address.text}
           type="text"
+          name="address"
           placeholder="Address"
-          onChange={this.changeAddress}
+          onChange={this.changeData}
         />
         <Input
-          value={phone.number}
           type="tel"
+          name="phone"
           placeholder="Phone Number"
-          onChange={this.changeNumber}
+          onChange={this.changeData}
         />
 
         <Input
-          value={email.text}
           type="email"
+          name="email"
           placeholder="Email"
-          onChange={this.changeEmail}
-        />
-
-        <DisplayCV
-          fName={fName.text}
-          lName={lName.text}
-          title={title.text}
-          address={address.text}
-          phone={phone.number}
-          email={email.text}
+          onChange={this.changeData}
         />
       </div>
     );
