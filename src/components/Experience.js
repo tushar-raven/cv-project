@@ -29,7 +29,7 @@ class Experience extends Component {
 
   changeData = (e) => {
     const { name, value } = e.target;
-    this.props.onExperienceChange({ [name]: value });
+    this.props.onExperienceChange({ [name]: value }, this.props.onKey);
   };
 
   render() {
@@ -39,31 +39,31 @@ class Experience extends Component {
           type="text"
           name="position"
           placeholder="Position"
-          onChange={this.changePosition}
+          onChange={this.changeData}
         />
         <Input
           type="text"
           name="company"
           placeholder="Company"
-          onChange={this.changeCompany}
+          onChange={this.changeData}
         />
         <Input
           type="text"
           name="city"
           placeholder="City"
-          onChange={this.changeCity}
+          onChange={this.changeData}
         />
         <Input
           type="text"
           name="startFrom"
           placeholder="From"
-          onChange={this.changeStartFrom}
+          onChange={this.changeData}
         />
         <Input
           type="text"
           name="ended"
           placeholder="To"
-          onChange={this.changeEnded}
+          onChange={this.changeData}
         />
       </div>
     );

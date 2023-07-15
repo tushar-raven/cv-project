@@ -42,6 +42,10 @@ class Personal extends Component {
     this.props.onPersonalChange({ [name]: value });
   };
 
+  handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    this.props.onPersonalChange({ photo: URL.createObjectURL(file) });
+  };
   render() {
     return (
       <div>
@@ -75,12 +79,22 @@ class Personal extends Component {
           placeholder="Phone Number"
           onChange={this.changeData}
         />
-
         <Input
           type="email"
           name="email"
           placeholder="Email"
           onChange={this.changeData}
+        />
+        <Input
+          type="textarea"
+          name="description"
+          placeholder="Description"
+          onChange={this.changeData}
+        />
+        <input
+          type="file"
+          name="profilePhoto"
+          onChange={this.handlePhotoChange}
         />
       </div>
     );

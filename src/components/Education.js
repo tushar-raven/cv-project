@@ -30,7 +30,9 @@ class Education extends Component {
 
   changeData = (e) => {
     const { name, value } = e.target;
-    this.props.onEducationChange({ [name]: value }, this.props.onKey);
+    const uniqueId = this.props.onKey;
+    const data = { [name]: value };
+    this.props.onEducationChange(data, uniqueId);
   };
 
   render() {
