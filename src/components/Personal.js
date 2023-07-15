@@ -48,7 +48,8 @@ class Personal extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="info-box">
+        <p>Personal Information</p>
         <Input
           type="text"
           name="fName"

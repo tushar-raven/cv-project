@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.header {
+  width: 100%;
+}
+
+.input {
+  width: 200px;
+}
+
+.info-box {
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+}
