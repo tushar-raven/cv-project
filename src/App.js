@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <>
         <div className="header">
-          <div>CV Creator</div>
+          <div className="header-text">CV CREATOR</div>
         </div>
         <Form />
       </>

@@ -4,6 +4,7 @@ import DisplayCV from "./CV";
 import { AddButton } from "./Buttons";
 import EducationWrapper from "./EducationWrapper";
 import ExperienceWrapper from "./ExperienceWrapper";
+import JsPDF from "jspdf";
 
 class Form extends Component {
   constructor() {
@@ -12,9 +13,9 @@ class Form extends Component {
     this.state = {
       formData: {},
       educationFormData: { 0: "" },
-      educationNumber: 0,
+      educationNumber: 1,
       experienceFormData: { 0: "" },
-      experienceNumber: 0,
+      experienceNumber: 1,
     };
   }
   changePersonal = (personalData) => {
@@ -75,6 +76,13 @@ class Form extends Component {
     });
   };
 
+  generatePDF = () => {
+    const report = new JsPDF("p", "px", [1290, 860]);
+    report.html(document.querySelector("#cv")).then(() => {
+      report.save(`${this.formData?.fName} + resume.pdf`);
+    });
+  };
+
   render() {
     const {
       formData,
@@ -86,20 +94,28 @@ class Form extends Component {
 
     return (
       <div>
-        <Personal onPersonalChange={this.changePersonal} />
-        <EducationWrapper
-          educationNumber={educationNumber}
-          changeEducation={this.changeEducation}
-          delete={this.deleteEducationComponent}
-        />
-        <AddButton onClick={this.addEducationComponent} />
-        <ExperienceWrapper
-          experienceNumber={experienceNumber}
-          changeExperience={this.changeExperience}
-          delete={this.deleteExperienceComponent}
-        />
-        <AddButton onClick={this.addExperienceComponent} />
+        <div className="info-boxes">
+          <Personal onPersonalChange={this.changePersonal} />
 
+          <p className="info-box-name">Education(Fill latest first)</p>
+          <EducationWrapper
+            educationNumber={educationNumber}
+            changeEducation={this.changeEducation}
+            delete={this.deleteEducationComponent}
+          />
+          <AddButton onClick={this.addEducationComponent} />
+
+          <p className="info-box-name">Experience(Fill latest first)</p>
+          <ExperienceWrapper
+            experienceNumber={experienceNumber}
+            changeExperience={this.changeExperience}
+            delete={this.deleteExperienceComponent}
+          />
+          <AddButton onClick={this.addExperienceComponent} />
+          <button className="pdf" onClick={this.generatePDF}>
+            Generate PDF
+          </button>
+        </div>
         <DisplayCV
           formData={formData}
           educationFormData={educationFormData}

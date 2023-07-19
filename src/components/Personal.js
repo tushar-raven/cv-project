@@ -49,7 +49,7 @@ class Personal extends Component {
   render() {
     return (
       <div className="info-box">
-        <p>Personal Information</p>
+        <p className="info-box-name">Personal Information</p>
         <Input
           type="text"
           name="fName"
@@ -92,8 +92,12 @@ class Personal extends Component {
           placeholder="Description"
           onChange={this.changeData}
         />
+        <label htmlFor="file" className="profile-photo">
+          Profile Photo
+        </label>
         <input
           type="file"
+          id="file"
           name="profilePhoto"
           onChange={this.handlePhotoChange}
         />

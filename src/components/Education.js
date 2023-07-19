@@ -37,7 +37,7 @@ class Education extends Component {
 
   render() {
     return (
-      <>
+      <div className="info-box">
         <Input
           type="text"
           name="uniName"
@@ -68,7 +68,7 @@ class Education extends Component {
           placeholder="To"
           onChange={this.changeData}
         />
-      </>
+      </div>
     );
   }
 }
