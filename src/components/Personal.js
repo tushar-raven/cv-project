@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import DisplayCV from "./CV";
 import Input from "./Input";
 
 class Personal extends Component {
